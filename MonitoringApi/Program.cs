@@ -44,6 +44,7 @@ app.UseWatchDog(opt =>
     // read value from appsettings.json
     opt.WatchPageUsername = app.Configuration.GetValue<string>("WatchDog:UserName");
     opt.WatchPagePassword = app.Configuration.GetValue<string>("WatchDog:Password");
+    opt.Blacklist = "health";
 });
 
 app.Run();
