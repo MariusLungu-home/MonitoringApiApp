@@ -23,7 +23,5 @@ public class RandomHealthCheck : IHealthCheck
             return Task.FromResult(
                 HealthCheckResult.Unhealthy($"The response time is unacceptable: {responseTimeInMs}ms"));
         }
-
-        
     }
 }

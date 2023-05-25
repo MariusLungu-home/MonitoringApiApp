@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using MonitoringApi.Models;
 
 namespace MonitoringApi.Controllers;
 
@@ -34,8 +35,19 @@ public class UsersController : ControllerBase
 
     // POST api/<UsersController>
     [HttpPost]
-    public void Post([FromBody] string value)
+    public IActionResult Post([FromBody] UserModel value)
     {
+        if (ModelState.IsValid)
+        {
+
+            _logger.LogInformation("The given model is valid");
+            return Ok();
+        }
+        else
+        {
+            _logger.LogWarning("The given model is invalid");
+            return BadRequest(ModelState);
+        }
     }
 
     // PUT api/<UsersController>/5
